@@ -18,6 +18,16 @@ export const parseCliArguments = (): CliArguments => {
       type: 'string',
       description: 'End date (YYYY-MM-DD). Defaults to today',
     })
+    .option('lastweek', {
+      type: 'boolean',
+      default: false,
+      description: 'Fetch data for last week (Monday to Sunday)',
+    })
+    .option('lastmonth', {
+      type: 'boolean',
+      default: false,
+      description: 'Fetch data for last month (1st to last day)',
+    })
     .option('with-links', {
       type: 'boolean',
       default: false,
@@ -34,6 +44,11 @@ export const parseCliArguments = (): CliArguments => {
       default: false,
       description: 'Show configuration file location and exit',
     })
+    .option('project-id', {
+      type: 'boolean',
+      default: false,
+      description: 'Manage repository project ID mappings: add|remove|list',
+    })
     .help()
     .alias('help', 'h')
     .parseSync();
@@ -41,8 +56,12 @@ export const parseCliArguments = (): CliArguments => {
   return {
     from: argv.from,
     to: argv.to,
+    lastweek: argv.lastweek,
+    lastmonth: argv.lastmonth,
     withLinks: argv['with-links'],
     output: argv.output as OutputFormat,
     showConfig: argv['show-config'],
+    projectIdCommand: argv['project-id'],
+    projectIdArgs: argv['project-id'] ? argv._.map(String) : undefined,
   };
 };
