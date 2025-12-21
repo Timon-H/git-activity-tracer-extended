@@ -12,8 +12,9 @@ npm install -g @tmegit/git-activity-tracer
 
 ### Using npx (No installation required)
 
+### Example: Fetch activity for January 2025
 ```bash
-npx @tmegit/git-activity-tracer --from 2025-01-01 --to 2025-01-31
+npx @tmegit/git-activity-tracer 2025-01-01 2025-01-31
 ```
 
 ### Local Development
@@ -59,14 +60,14 @@ At least one token (GitHub or GitLab) is required. Both can be used simultaneous
 git-activity-tracer
 
 # Fetch activity for a specific date range
-git-activity-tracer --from 2025-01-01 --to 2025-01-31
+git-activity-tracer 2025-01-01 2025-01-31
 
 # Export as JSON or CSV
-git-activity-tracer --output json
-git-activity-tracer --output csv
+git-activity-tracer --format json
+git-activity-tracer --format csv
 
 # Using npx (no installation)
-npx @tmegit/git-activity-tracer --from 2025-01-01 --to 2025-01-31
+npx @tmegit/git-activity-tracer 2025-01-01 2025-01-31
 ```
 
 ## Features
@@ -92,11 +93,11 @@ The tool automatically detects available tokens and fetches from all configured 
 ## Command Line Options
 
 | Option              | Description                                | Default                |
-| ------------------- | ------------------------------------------ | ---------------------- |
-| `--from <date>`     | Start date in YYYY-MM-DD format            | Monday of current week |
-| `--to <date>`       | End date in YYYY-MM-DD format              | Today                  |
+|---------------------| ------------------------------------------ | ---------------------- |
+| `<fromdate>`        | Start date in YYYY-MM-DD format            | Monday of current week |
+| `<todate>`          | End date in YYYY-MM-DD format              | Today                  |
 | `--with-links`      | Include URLs in console output             | false                  |
-| `--output <format>` | Output format: `console`, `json`, or `csv` | `console`              |
+| `--format <format>` | Output format: `console`, `json`, or `csv` | `console`              |
 | `config`            | Display configuration file location        | -                      |
 | `project-id`        | Manage repository project ID mappings      | -                      |
 
@@ -109,13 +110,13 @@ The tool automatically detects available tokens and fetches from all configured 
 git-activity-tracer
 
 # Specific date range
-git-activity-tracer --from 2025-01-01 --to 2025-01-31
+git-activity-tracer 2025-01-01 2025-01-31
 
 # Single day
-git-activity-tracer --from 2025-12-19 --to 2025-12-19
+git-activity-tracer 2025-12-19 2025-12-19
 
 # Using npx
-npx @tmegit/git-activity-tracer --from 2025-01-01 --to 2025-01-31
+npx @tmegit/git-activity-tracer 2025-01-01 2025-01-31
 ```
 
 ### Output Formats
@@ -123,19 +124,19 @@ npx @tmegit/git-activity-tracer --from 2025-01-01 --to 2025-01-31
 **Console** (human-readable, grouped by date):
 
 ```bash
-git-activity-tracer --from 2025-11-11 --to 2025-11-12
+git-activity-tracer 2025-11-11 2025-11-12
 ```
 
 **JSON** (for programmatic processing):
 
 ```bash
-git-activity-tracer --from 2025-11-11 --to 2025-11-12 --output json
+git-activity-tracer 2025-11-11 2025-11-12 --format json
 ```
 
 **CSV** (for spreadsheets):
 
 ```bash
-git-activity-tracer --from 2025-11-11 --to 2025-11-12 --output csv
+git-activity-tracer 2025-11-11 2025-11-12 --format csv
 ```
 
 ### Include URLs
@@ -173,7 +174,7 @@ git-activity-tracer project-id add globex/mobile-app 2849372837B
 git-activity-tracer project-id list
 
 # Generate report - project IDs automatically included
-git-activity-tracer --from 2025-12-01 --to 2025-12-19 --output csv
+git-activity-tracer 2025-12-01 2025-12-19 --format csv
 ```
 
 ### Output Format
@@ -260,7 +261,7 @@ GITLAB_TOKEN=your_token_here
 pnpm build
 
 # Run the compiled version
-node dist/index.js --from 2025-01-01 --to 2025-01-31
+node dist/index.js 2025-01-01 2025-01-31
 ```
 
 ## Development
