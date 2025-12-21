@@ -76,25 +76,6 @@ export type GraphQLErrorResponse = {
   errors?: Array<{ message: string; type?: string; path?: string[] }>;
 };
 
-export interface GitHubEventCommit {
-  sha?: string;
-  message?: string;
-  url?: string;
-  author?: {
-    name?: string;
-    email?: string;
-  };
-}
-
-export interface GitHubEventPayload {
-  ref?: string;
-  commits?: GitHubEventCommit[];
-}
-
-export interface GitHubEventRepository {
-  name?: string;
-}
-
 export interface GraphQLApiResponse {
   data?: unknown;
 }
