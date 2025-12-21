@@ -1,3 +1,16 @@
+# 1.0.0 (2025-12-21)
+
+
+### Bug Fixes
+
+* **docs:** update README to correct command syntax and improve clarity ([3283043](https://github.com/felixAnhalt/git-activity-tracer/commit/3283043dd3535a6591d77d3396a7bd644e057647))
+
+
+### Features
+
+* **cli:** refactor cli ([9bc2881](https://github.com/felixAnhalt/git-activity-tracer/commit/9bc2881ee0ebfca816238229f9391d6292ee6648))
+* **tests:** add integration tests for CLI and formatter functionality ([f284307](https://github.com/felixAnhalt/git-activity-tracer/commit/f2843071ed0482f0e7f282b4cc1d64f917568d54))
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
