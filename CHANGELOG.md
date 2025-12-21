@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/felixAnhalt/git-activity-tracer/compare/v1.0.1...v1.0.2) (2025-12-21)
+
+
+### Bug Fixes
+
+* **dateRanges:** ensure date ranges return UTC timestamps with local wall-clock time ([#7](https://github.com/felixAnhalt/git-activity-tracer/issues/7)) ([b311b0b](https://github.com/felixAnhalt/git-activity-tracer/commit/b311b0b8578fc0aa4b2786aefffc6e70941ff97a))
+
 ## [1.0.1](https://github.com/felixAnhalt/git-activity-tracer/compare/v1.0.0...v1.0.1) (2025-12-21)
 
 
