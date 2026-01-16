@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/felixAnhalt/git-activity-tracer/compare/v1.0.3...v1.0.4) (2026-01-16)
+
+
+### Bug Fixes
+
+* **dateRanges:** change comparison operator to exclude start timestamp ([71e31f6](https://github.com/felixAnhalt/git-activity-tracer/commit/71e31f617ad89ea306acb4e221aa31a95f21278a))
+
 ## [1.0.3](https://github.com/felixAnhalt/git-activity-tracer/compare/v1.0.2...v1.0.3) (2026-01-16)
 
 
