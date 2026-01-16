@@ -104,8 +104,9 @@ export const parseCliArguments = (): CliArguments => {
     .argument('[to]', 'End date (YYYY-MM-DD)')
     .option('-f, --format <type>', 'Output format', 'console')
     .option('-l, --with-links', 'Include URLs in output', false)
-    .action(() => {
-      // Handled in main CLI logic
+    .action((from, to, options) => {
+      // Arguments are captured by Commander.js and passed to the action callback
+      // The parsing of these arguments is handled after program.parse()
     });
 
   program.parse(process.argv);

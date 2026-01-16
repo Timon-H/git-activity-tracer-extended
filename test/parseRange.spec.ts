@@ -61,11 +61,11 @@ describe('parseRange', () => {
     const today = dayjs();
     const oneMonthAgo = today.subtract(1, 'month');
 
-    // from should be first day of last month
-    expect(from.date()).toBe(oneMonthAgo.date());
+    // from should be exactly one month ago at start of day
+    expect(from.format('YYYY-MM-DD')).toBe(oneMonthAgo.format('YYYY-MM-DD'));
 
-    // to should be last day of last month
-    expect(to.date()).toBe(today.date());
+    // to should be today at end of day
+    expect(to.format('YYYY-MM-DD')).toBe(today.format('YYYY-MM-DD'));
 
     // from should be before to
     expect(from.isBefore(to, 'day') || from.isSame(to, 'day')).toBe(true);
@@ -88,11 +88,11 @@ describe('parseRange', () => {
 
     // Should use lastmonth range, not the provided dates
 
-    // from should be first day of last month
-    expect(from.date()).toBe(oneMonthAgo.date());
+    // from should be exactly one month ago at start of day
+    expect(from.format('YYYY-MM-DD')).toBe(oneMonthAgo.format('YYYY-MM-DD'));
 
-    // to should be last day of last month
-    expect(to.date()).toBe(today.date());
+    // to should be today at end of day
+    expect(to.format('YYYY-MM-DD')).toBe(today.format('YYYY-MM-DD'));
   });
 });
 
@@ -118,16 +118,13 @@ describe('getLastMonthRange', () => {
     const today = dayjs();
     const oneMonthAgo = today.subtract(1, 'month');
 
-    // from should be first day of month
-    expect(from.date()).toBe(oneMonthAgo.date());
+    // from should be exactly one month ago at start of day
+    expect(from.format('YYYY-MM-DD')).toBe(oneMonthAgo.format('YYYY-MM-DD'));
 
-    // to should be last day of month
-    expect(to.date()).toBe(today.date());
+    // to should be today at end of day
+    expect(to.format('YYYY-MM-DD')).toBe(today.format('YYYY-MM-DD'));
 
-    // Both should be in same month
-    expect(from.month()).toBe(oneMonthAgo.month());
-
-    // Both should be in same year
-    expect(from.year()).toBe(to.year());
+    // from should be before or equal to to
+    expect(from.isBefore(to, 'day') || from.isSame(to, 'day')).toBe(true);
   });
 });
