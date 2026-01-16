@@ -1,7 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { GitLabConnector, createGitLabConnector } from '../../src/connectors/gitlab.js';
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc.js';
 import type { Gitlab } from '@gitbeaker/rest';
+
+dayjs.extend(utc);
 
 describe('GitLabConnector', () => {
   let connector: GitLabConnector;
@@ -70,8 +73,8 @@ describe('GitLabConnector', () => {
   });
 
   describe('fetchContributions', () => {
-    const from = dayjs('2025-01-01');
-    const to = dayjs('2025-01-31');
+    const from = dayjs('2025-01-01T00:00:00Z').utc(true);
+    const to = dayjs('2025-01-31T23:59:59.999Z').utc(true);
 
     it('should fetch and parse contributions successfully', async () => {
       mockGitlab.Users.showCurrentUser.mockResolvedValue({

@@ -214,7 +214,7 @@ export class GitLabConnector implements Connector {
       if (Number.isNaN(createdTimestamp)) continue;
 
       if (
-        createdTimestamp <= dateRangeTimestamps.fromTimestamp ||
+        createdTimestamp < dateRangeTimestamps.fromTimestamp ||
         createdTimestamp > dateRangeTimestamps.toTimestamp
       ) {
         continue;
@@ -320,7 +320,7 @@ export class GitLabConnector implements Connector {
       if (Number.isNaN(createdTimestamp)) continue;
 
       if (
-        createdTimestamp <= dateRangeTimestamps.fromTimestamp ||
+        createdTimestamp < dateRangeTimestamps.fromTimestamp ||
         createdTimestamp > dateRangeTimestamps.toTimestamp
       ) {
         continue;
@@ -421,7 +421,7 @@ export class GitLabConnector implements Connector {
 
         // Filter by date range
         if (
-          createdTimestamp <= dateRangeTimestamps.fromTimestamp ||
+          createdTimestamp < dateRangeTimestamps.fromTimestamp ||
           createdTimestamp > dateRangeTimestamps.toTimestamp
         ) {
           continue;
