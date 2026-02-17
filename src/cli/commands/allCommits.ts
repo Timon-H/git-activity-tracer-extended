@@ -32,8 +32,9 @@ export const runAllCommitsReport = async (cliArguments: CliArguments): Promise<v
 
   // Format data
   const formatter = createFormatter(cliArguments.output);
-  const result = formatter.format(commits, {
+  const result = await formatter.format(commits, {
     withLinks: cliArguments.withLinks,
+    anonymize: cliArguments.anonymize,
   });
 
   // Write output

@@ -15,10 +15,11 @@ export type Contribution = {
   projectId?: string;
 };
 
-export type OutputFormat = 'console' | 'json' | 'csv';
+export type OutputFormat = 'console' | 'json' | 'csv' | 'git';
 
 export interface FormatterOptions {
   withLinks: boolean;
+  anonymize?: boolean;
 }
 
 export interface FormatterResult {

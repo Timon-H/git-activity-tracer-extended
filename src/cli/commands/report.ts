@@ -33,8 +33,9 @@ export const runContributionReport = async (cliArguments: CliArguments): Promise
 
   // Format data
   const formatter = createFormatter(cliArguments.output);
-  const result = formatter.format(contributions, {
+  const result = await formatter.format(contributions, {
     withLinks: cliArguments.withLinks,
+    anonymize: cliArguments.anonymize,
   });
 
   // Write output

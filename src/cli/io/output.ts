@@ -27,6 +27,12 @@ export const writeOutput = async (
       return;
     }
 
+    // Git format creates its own repository, just print the result
+    if (outputFormat === 'git') {
+      console.log(content);
+      return;
+    }
+
     // File-based output
     const filename = generateOutputFilename(fromDate, toDate, outputFormat);
     const filepath = path.resolve(process.cwd(), filename);

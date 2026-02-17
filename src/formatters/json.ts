@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc.js';
 import type { Contribution, FormatterOptions, FormatterResult } from '../types.js';
 import type { Formatter } from './types.js';
+import { anonymizeMessage, anonymizeRepository } from '../lib/git/anonymizer.js';
 
 dayjs.extend(utc);
 
@@ -20,7 +21,9 @@ export class JsonFormatter implements Formatter {
       };
 
       if (contribution.repository) {
-        item.repository = contribution.repository;
+        item.repository = options.anonymize
+          ? anonymizeRepository(contribution.repository)
+          : contribution.repository;
       }
 
       if (contribution.target) {
@@ -32,7 +35,9 @@ export class JsonFormatter implements Formatter {
       }
 
       if (contribution.text) {
-        item.text = contribution.text;
+        item.text = options.anonymize
+          ? anonymizeMessage(contribution.text)
+          : contribution.text;
       }
 
       if (options.withLinks && contribution.url) {

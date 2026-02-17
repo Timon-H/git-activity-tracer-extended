@@ -20,6 +20,7 @@ export interface CliArguments {
   /** Fetch data for last month (1st to last day) */
   lastmonth?: boolean;
   withLinks: boolean;
+  anonymize: boolean;
   output: OutputFormat;
   showConfig: boolean;
   projectIdCommand?: boolean;

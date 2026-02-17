@@ -2,6 +2,7 @@ import type { Contribution, FormatterOptions, FormatterResult } from '../types.j
 import type { Formatter } from './types.js';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc.js';
+import { anonymizeMessage, anonymizeRepository } from '../lib/git/anonymizer.js';
 
 dayjs.extend(utc);
 
@@ -22,14 +23,25 @@ export class CsvFormatter implements Formatter {
 
     // Data rows
     for (const contribution of sorted) {
+      const repository = contribution.repository
+        ? options.anonymize
+          ? anonymizeRepository(contribution.repository)
+          : contribution.repository
+        : '';
+      const text = contribution.text
+        ? options.anonymize
+          ? anonymizeMessage(contribution.text)
+          : contribution.text
+        : '';
+
       const row = [
         this.escapeCsvField(contribution.type),
         this.escapeCsvField(contribution.timestamp),
         this.escapeCsvField(dayjs.utc(contribution.timestamp).format('YYYY-MM-DD')),
-        this.escapeCsvField(contribution.repository ?? ''),
+        this.escapeCsvField(repository),
         this.escapeCsvField(contribution.target ?? ''),
         this.escapeCsvField(contribution.projectId ?? ''),
-        this.escapeCsvField(contribution.text ?? ''),
+        this.escapeCsvField(text),
       ];
 
       if (options.withLinks) {

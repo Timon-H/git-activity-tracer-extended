@@ -58,6 +58,7 @@ export const parseCliArguments = (): CliArguments => {
     .argument('[to]', 'End date (YYYY-MM-DD)')
     .option('-f, --format <type>', 'Output format', 'console')
     .option('-l, --with-links', 'Include URLs in output', false)
+    .option('-a, --anonymize', 'Anonymize commit messages and repository names', false)
     .action(() => {
       // Default action - handled by the absence of subcommands
     });
@@ -104,6 +105,7 @@ export const parseCliArguments = (): CliArguments => {
     .argument('[to]', 'End date (YYYY-MM-DD)')
     .option('-f, --format <type>', 'Output format', 'console')
     .option('-l, --with-links', 'Include URLs in output', false)
+    .option('-a, --anonymize', 'Anonymize commit messages and repository names', false)
     .action((from, to, options) => {
       // Arguments are captured by Commander.js and passed to the action callback
       // The parsing of these arguments is handled after program.parse()
@@ -125,6 +127,7 @@ export const parseCliArguments = (): CliArguments => {
     return {
       output: 'console',
       withLinks: false,
+      anonymize: false,
       showConfig: false,
       projectIdCommand: true,
       projectIdArgs: [subcommand, ...subArgs],
@@ -136,6 +139,7 @@ export const parseCliArguments = (): CliArguments => {
     return {
       output: 'console',
       withLinks: false,
+      anonymize: false,
       showConfig: true,
     };
   }
@@ -149,6 +153,7 @@ export const parseCliArguments = (): CliArguments => {
       commandType: 'all-commits',
       ...dateRange,
       withLinks: options.withLinks,
+      anonymize: options.anonymize,
       output: (options.format as OutputFormat) ?? 'console',
       showConfig: false,
     };
@@ -161,6 +166,7 @@ export const parseCliArguments = (): CliArguments => {
   return {
     ...dateRange,
     withLinks: options.withLinks,
+    anonymize: options.anonymize,
     output: (options.format as OutputFormat) ?? 'console',
     showConfig: false,
   };

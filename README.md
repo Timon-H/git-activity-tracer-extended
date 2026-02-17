@@ -36,6 +36,12 @@ git-activity-tracer 2025-01-01 2025-01-31
 git-activity-tracer --format json
 git-activity-tracer --format csv
 
+# Git export - create git commits for GitHub contribution graph
+git-activity-tracer --format git
+
+# Git export with anonymized messages
+git-activity-tracer --format git --anonymize
+
 # All commits from all branches
 git-activity-tracer all-commits
 
@@ -45,25 +51,33 @@ git-activity-tracer --with-links
 
 ## Environment Variables
 
-| Variable       | Required  | Description                           | Default              |
-| -------------- | --------- | ------------------------------------- | -------------------- |
-| `GH_TOKEN`     | One of \* | GitHub personal access token          | -                    |
-| `GITLAB_TOKEN` | One of \* | GitLab personal access token          | -                    |
-| `GITLAB_HOST`  | No        | GitLab instance URL (for self-hosted) | `https://gitlab.com` |
+| Variable           | Required  | Description                           | Default              |
+| ------------------ | --------- | ------------------------------------- | -------------------- |
+| `GH_TOKEN`         | One of \* | GitHub personal access token          | -                    |
+| `GITLAB_TOKEN`     | One of \* | GitLab personal access token          | -                    |
+| `GITLAB_HOST`      | No        | GitLab instance URL (for self-hosted) | `https://gitlab.com` |
+| `GIT_AUTHOR_NAME`  | No        | Name for git commits (git format)     | `Git Activity Tracer`|
+| `GIT_AUTHOR_EMAIL` | No        | Email for git commits (git format)    | `noreply@example.com`|
 
 \*At least one token (GitHub or GitLab) is required. Both can be used simultaneously.
 
+**For Git Export (`--format git`):**
+- `GIT_AUTHOR_NAME` and `GIT_AUTHOR_EMAIL` set both author and committer information
+- Use your GitHub email (e.g., `username@users.noreply.github.com`) for contributions to appear in your GitHub profile
+- Find your GitHub noreply email at: https://github.com/settings/emails
+
 ## Command Options
 
-| Option              | Description                                    | Default                |
-| ------------------- | ---------------------------------------------- | ---------------------- |
-| `<fromdate>`        | Start date (YYYY-MM-DD)                        | Monday of current week |
-| `<todate>`          | End date (YYYY-MM-DD)                          | Today                  |
-| `--with-links`      | Include URLs in console output                 | false                  |
-| `--format <format>` | Output format: `console`, `json`, or `csv`     | `console`              |
-| `config`            | Display configuration file location            | -                      |
-| `project-id`        | Manage repository project ID mappings          | -                      |
-| `all-commits`       | Show all commits from all branches (see below) | -                      |
+| Option              | Description                                           | Default                |
+| ------------------- | ----------------------------------------------------- | ---------------------- |
+| `<fromdate>`        | Start date (YYYY-MM-DD)                               | Monday of current week |
+| `<todate>`          | End date (YYYY-MM-DD)                                 | Today                  |
+| `--with-links`      | Include URLs in console output                        | false                  |
+| `--format <format>` | Output format: `console`, `json`, `csv`, or `git`     | `console`              |
+| `--anonymize`       | Anonymize commit messages and repository names        | false                  |
+| `config`            | Display configuration file location                   | -                      |
+| `project-id`        | Manage repository project ID mappings                 | -                      |
+| `all-commits`       | Show all commits from all branches (see below)        | -                      |
 
 ### All Commits Command
 
@@ -79,6 +93,50 @@ git-activity-tracer all-commits --format csv           # Export
 
 - **Default**: Commits from base branches (main/master/develop) + PRs + reviews
 - **all-commits**: ALL commits from ALL branches (including feature branches)
+
+### Git Export Format
+
+The `--format git` option creates a local git repository with commits representing your contributions. This is useful for populating your GitHub contribution graph with activity from private repositories or other platforms.
+
+**Important:** Set your own name and email for contributions to appear in your GitHub profile:
+
+```bash
+# Use your GitHub noreply email for proper attribution
+export GIT_AUTHOR_NAME="Your Name"
+export GIT_AUTHOR_EMAIL="your-id+username@users.noreply.github.com"
+
+# Export contributions as git commits
+git-activity-tracer 2025-01-01 2025-12-31 --format git
+```
+
+This creates a `git-contributions-export/` directory with git commits for each contribution. Each commit:
+- Preserves the original timestamp (both author and committer dates)
+- Uses your configured name and email
+- Includes metadata about the contribution type and repository
+
+**Anonymization**: Use `--anonymize` to hash commit messages and repository names while preserving structure:
+
+```bash
+git-activity-tracer --format git --anonymize
+```
+
+Anonymization is consistent (same input → same hash) and preserves conventional commit prefixes (e.g., `feat:`, `fix:`).
+
+**Push to GitHub:**
+
+```bash
+cd git-contributions-export
+git remote add origin git@github.com:username/activity-showcase.git
+git branch -M main
+git push -u origin main --force
+```
+
+**Why use this?**
+
+- Showcase your work from private repositories
+- Combine GitLab and GitHub activity in one contribution graph
+- Create a portable record of your development activity
+- Anonymize sensitive project details while showing activity patterns
 
 ## Project ID Mapping
 
