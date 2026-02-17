@@ -1,6 +1,6 @@
 # Git Activity Tracer Extended
 
-> **Note:** This is an extended fork of [git-activity-tracer](https://github.com/anhalt/git-activity-tracer) by Felix Anhalt, adding git export and anonymization features.
+> **Note:** This is an extended fork of [git-activity-tracer](https://github.com/anhalt/git-activity-tracer) by [Felix Anhalt](https://github.com/anhalt), adding git export and anonymization features. All credit for the original core functionality goes to Felix.
 
 Track your development activity across GitHub and GitLab. Fetch commits, pull/merge requests, and code reviews from your authenticated accounts.
 
@@ -204,6 +204,10 @@ pnpm build          # Build for distribution
 
 ## Contributing
 
+**For core functionality improvements:** Please consider contributing to the [original project](https://github.com/anhalt/git-activity-tracer) by Felix Anhalt.
+
+**For git export/anonymization features:** Contributions to this fork are welcome!
+
 This project uses [Conventional Commits](https://www.conventionalcommits.org/) for automated versioning:
 
 - `feat:` - New feature (minor bump: 1.0.0 → 1.1.0)
@@ -223,11 +227,15 @@ Commits to `main` trigger automated releases via semantic-release.
 This is an extended fork of [git-activity-tracer](https://github.com/anhalt/git-activity-tracer) by [Felix Anhalt](https://github.com/anhalt).
 
 **Original Project:** https://github.com/anhalt/git-activity-tracer  
+**Fork Maintainer:** [Timon Hargesheimer](https://github.com/Timon-H)
+
 **Extended Features Added:**
 - Git export format (`--format git`) to create local git repositories
 - Anonymization support (`--anonymize`) for all output formats
 - Custom author/committer credentials via environment variables
 - Enhanced documentation and test coverage
+
+If you only need the core functionality without git export features, please use the [original project](https://github.com/anhalt/git-activity-tracer).
 
 ## License
 
