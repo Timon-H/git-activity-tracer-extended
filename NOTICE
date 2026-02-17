@@ -1,0 +1,32 @@
+Git Activity Tracer Extended
+Copyright 2024-2026 Felix Anhalt
+Copyright 2026 Timon Hargesheimer
+
+This product includes software developed by Felix Anhalt.
+Original project: https://github.com/anhalt/git-activity-tracer
+
+Extended fork modifications by Timon Hargesheimer include:
+
+New Files:
+- src/formatters/git.ts (Git export formatter)
+- src/lib/git/repositoryManager.ts (Git repository management)
+- src/lib/git/anonymizer.ts (Anonymization utilities)
+- test/formatters/git.spec.ts (Git formatter tests)
+- test/lib/anonymizer.spec.ts (Anonymization tests)
+- .env.example (Environment variable documentation)
+
+Modified Files:
+- src/formatters/console.ts (Added anonymization support)
+- src/formatters/csv.ts (Added anonymization support)
+- src/formatters/json.ts (Added anonymization support)
+- src/formatters/index.ts (Added git formatter export)
+- src/formatters/types.ts (Updated formatter interface)
+- src/cli/parser.ts (Added --anonymize and --format git options)
+- src/cli/types.ts (Added anonymize option)
+- src/cli/io/output.ts (Added git format handling)
+- src/cli/commands/report.ts (Added anonymize parameter)
+- src/cli/commands/allCommits.ts (Added anonymize parameter)
+- src/types.ts (Added anonymize to FormatterOptions)
+- package.json (Added simple-git dependency, updated metadata)
+- README.md (Added git export and anonymization documentation)
+- .gitignore (Added git export output patterns)
