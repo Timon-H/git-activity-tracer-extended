@@ -1,5 +1,5 @@
 {
-  "name": "@tmegit/git-activity-tracer-extended",
+  "name": "git-activity-tracer-extended",
   "version": "1.0.4",
   "description": "Track your development activity across GitHub and GitLab. Fetch commits, pull/merge requests, and code reviews from your authenticated accounts. Extended fork with git export and anonymization features.",
   "type": "module",

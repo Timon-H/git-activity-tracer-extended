@@ -4,25 +4,35 @@
 
 Track your development activity across GitHub and GitLab. Fetch commits, pull/merge requests, and code reviews from your authenticated accounts.
 
-## Quick Start
+## Installation
+
+**Clone and install:**
 
 ```bash
-# Try it now with npx
-npx @tmegit/git-activity-tracer-extended  # Fetch current week
+git clone https://github.com/Timon-H/git-activity-tracer-extended.git
+cd git-activity-tracer-extended
+pnpm install
+pnpm build
 ```
+
+**Or install directly from GitHub:**
+
+```bash
+npm install -g github:Timon-H/git-activity-tracer-extended
+```
+
+## Quick Start
 
 **First time setup:**
 
 1. Get a token: [GitHub](https://github.com/settings/tokens) or [GitLab](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)
 2. Set environment variable: `export GH_TOKEN=your_token_here` (or `GITLAB_TOKEN`)
-3. Run: `npx @tmegit/git-activity-tracer-extended`
+3. Run: `git-activity-tracer`
 
-**Install globally** (optional):
+**Or run directly without installing:**
 
 ```bash
-npm install -g @tmegit/git-activity-tracer-extended
-git-activity-tracer  # Fetch current week
-git-activity-tracer 2025-01-01 2025-01-31  # Specific range
+npx github:Timon-H/git-activity-tracer-extended
 ```
 
 ## Common Commands
