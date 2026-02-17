@@ -1,4 +1,6 @@
-# Git Activity Tracer
+# Git Activity Tracer Extended
+
+> **Note:** This is an extended fork of [git-activity-tracer](https://github.com/anhalt/git-activity-tracer) by Felix Anhalt, adding git export and anonymization features.
 
 Track your development activity across GitHub and GitLab. Fetch commits, pull/merge requests, and code reviews from your authenticated accounts.
 
@@ -6,19 +8,19 @@ Track your development activity across GitHub and GitLab. Fetch commits, pull/me
 
 ```bash
 # Try it now with npx
-npx @tmegit/git-activity-tracer  # Fetch current week
+npx @tmegit/git-activity-tracer-extended  # Fetch current week
 ```
 
 **First time setup:**
 
 1. Get a token: [GitHub](https://github.com/settings/tokens) or [GitLab](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)
 2. Set environment variable: `export GH_TOKEN=your_token_here` (or `GITLAB_TOKEN`)
-3. Run: `npx @tmegit/git-activity-tracer`
+3. Run: `npx @tmegit/git-activity-tracer-extended`
 
 **Install globally** (optional):
 
 ```bash
-npm install -g @tmegit/git-activity-tracer
+npm install -g @tmegit/git-activity-tracer-extended
 git-activity-tracer  # Fetch current week
 git-activity-tracer 2025-01-01 2025-01-31  # Specific range
 ```
@@ -215,6 +217,17 @@ Commits to `main` trigger automated releases via semantic-release.
 
 - **GitHub**: Up to 50 repositories, 100 commits per repository
 - **GitLab**: Up to 1000 events and 1000 merge requests per query
+
+## Credits
+
+This is an extended fork of [git-activity-tracer](https://github.com/anhalt/git-activity-tracer) by [Felix Anhalt](https://github.com/anhalt).
+
+**Original Project:** https://github.com/anhalt/git-activity-tracer  
+**Extended Features Added:**
+- Git export format (`--format git`) to create local git repositories
+- Anonymization support (`--anonymize`) for all output formats
+- Custom author/committer credentials via environment variables
+- Enhanced documentation and test coverage
 
 ## License
 
